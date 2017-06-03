@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+        <title>Retrieve IP</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="vendor/bootstrap.min.css" />
+        <link rel="stylesheet" href="styles/kendo.common-bootstrap.min.css" />
+        <link rel="stylesheet" href="styles/kendo.flat.min.css" />
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/kendo.ui.core.min.js"></script>
+
+        <link rel="stylesheet" href="styles/styles.css" />
+  </head>
+  <body>
+        <div id="example" class="container">
+            <ul id="menu">
+                <li><a href="/">Home</a></li>
+            </ul>
+
+            <div class="row clearfix" style="margin-bottom: 20px">
+                <div class="col-lg-12">
+                    <section class="well">
+                        <h2 class="ra-well-title">Dashboard</h2>
+
+                        <div class="form-horizontal form-widgets col-sm-8">
+                            <div class="form-group">
+                                <label class="control-label col-sm-2">IP</label>
+                                <div class="col-lg-6">
+                                    <input value="@ViewData["Ip"]" disabled/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                    </section>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-lg-12">
+                    <p class="lead">
+                        Hopefully this site will allow you to easily get your current IP.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row clearfix" style="margin-bottom: 20px">
+                <div class="col-lg-12">
+                    <section class="well">
+                        <h2 class="ra-well-title">API</h2>
+
+                        <blockquote>
+                              <p>GET /api/v1/ip</p>
+                        </blockquote>
+
+                        <pre>$ curl @ViewData["Url_Ip"]
+@ViewData["Ip"]</pre>
+
+                        <blockquote>
+                              <p>GET /api/v1/ip.json</p>
+                        </blockquote>
+
+                        <pre>$ curl @ViewData["Url_Ip"]&#46;json
+{"ip":"@ViewData["Ip"]"}</pre>
+
+                        <!--blockquote>
+                              <p>GET /api/v1/ip.xml</p>
+                        </blockquote>
+
+                        <pre>$ curl @ViewData["Url_Ip"]&#46;xml
+&lt;ip&gt;@ViewData["Ip"]&lt;/ip&gt;</pre>
+
+                        <blockquote>
+                              <p>GET /api/v1/ip/newline.json</p>
+                        </blockquote>
+
+                        <pre>$ curl @ViewData["Url_Ip"]&#46;json
+{"ip":"@ViewData["Ip"]\n"}</pre-->
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            $("#menu").kendoMenu();
+
+            $("#example .form-widgets")
+                .find("select:not([multiple])").kendoDropDownList().end()
+                .find("select[multiple]").kendoMultiSelect().end()
+                .find("input:not([type])").addClass("k-textbox").end()
+                .find("input[type=password]").addClass("k-textbox").end()
+                .find("input[type=email]").addClass("k-textbox").end()
+                .find("input[type=date]").kendoDatePicker().end()
+                .find("input[type=number]").kendoNumericTextBox({
+                    format: "0 years"
+            });
+        </script>
+  </body>
+</html>
